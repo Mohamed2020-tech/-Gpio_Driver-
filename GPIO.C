@@ -34,9 +34,9 @@ void GPIO_Config(uint32_t *GPIOx,uint8_t pin, uint8_t Mode , uint8_t Type)
   {
     assert(Mode ==INPUT || Mode == OUTPUT || Mode ==ALTERNATE || Mode == ANALOG_INPUT);
     assert(Type == OUTPUT_PUSH_PULL || Type == OUTPUT_OPEN_DRAIN );
-    *GPIOx_MODE_R |= (1<< Mode);
+    *GPIOx_MODE_R |= (Mode<< (2* pin));
    // GPIOx_OD_R --> 
-    *GPIOx_PUPDR  |= (1<< Type);
+    *GPIOx_PUPDR  |= (Type << pin);
   
   }
 
